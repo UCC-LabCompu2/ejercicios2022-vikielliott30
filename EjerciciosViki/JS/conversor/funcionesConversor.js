@@ -1,86 +1,35 @@
-/*Titulos*/
-h1{
-    font-family: 'Inknut Antiqua', serif;
-    line-height: 130%;
-}
-
-.body-num{
-    background: url("../../../Ejercicios-JavaScript/images/fondo_numeros.jpg");
-    background-size: cover;
-}
-
-.centrado{
-    margin: auto;
-}
-
-.div-conver{
-    background: #FFFFFF;
-    border: 2px solid #000000;
-    border-radius: 20px;
-    max-width: 430px;
-    text-align: center;
-    margin: 10px auto;
-    padding: 10px 10px;
-    margin-top: 50px;
-}
-
-.color-div{
-    background: #feab5a;
-    max-width: 500px;
-}
-
-.operacionesMat input{
-    max-width: 40px;
-}
-
-/*Formulario*/
-input{
-    border-radius: 2px;
-    box-shadow: 5px 5px 10px #7a8aac;
-}
-
-input:focus {
-    border-color: #19ac67;
-}
-
-.ejer{
-    border:1px solid #000000;
-    background: rgba(240, 255, 105, 0.47);
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #f1f1f1;
-    border: 1px solid #555;
-}
-
-li a {
-    display: block;
-    color: #000;
-    padding: 8px 16px;
-    text-decoration: none;
-    font-family: 'Inknut Antiqua', serif;
-    font-size: 10px;
-}
-
-li {
-    text-align: center;
-    border-bottom: 1px solid #555;
-}
-
-li:last-child {
-    border-bottom: none;
-}
-
-li a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
+/**
+ * conversion de unidades de metros, yardas, pies y pulgadas
+ * @method cambiar_unidades
+ * @param {string} id - El id de los metros, pies o pulgadas
+ * @param  {number} valor - El valor de los inputs de metros, yardas, pies o pulgadas
+ */
+function cambiar_unidades(id, valor) {
+    var metro, pulgada, pie, yarda;
+    if (isNaN(valor)) {
+        alert("Se ingresó un valor invalido" + id);
+        metro = "";
+        pulgada = "";
+        pie = "";
+        yarda = "";
+    } else if (id == "metro") {
+        metro = valor;
+        pulgada = 39.3701 * valor;
+        pie = 3.28084 * valor;
+        yarda = 1.03961 * valor;
+    } else if (id == "pulgada") {
+        pulgada = valor;
+        metro = 0.0254 * valor;
+        pie = 0.0833333 * valor;
+        yarda = 0.0277778 * valor;
+    } else if (id == "yarda") {
+        yarda = valor;
+        metro = 0.9144 * valor;
+        pulgada = 36 * valor;
+        pie = 3 * valor;
+    }
+    document.Unidades.unid_metro.value = metro;
+    document.Unidades.unid_pulgada.value = pulgada;
+    document.Unidades.unid_pie.value = pie;
+    document.Unidades.unid_yarda.value = yarda;
 }
